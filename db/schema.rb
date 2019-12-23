@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_141606) do
+ActiveRecord::Schema.define(version: 2019_12_23_151129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_141606) do
   create_table "phones", force: :cascade do |t|
     t.string "number"
     t.string "code"
-    t.string "type"
+    t.string "phone_type"
     t.boolean "preferential"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_141606) do
     t.string "color"
     t.string "year"
     t.string "license_plate"
-    t.string "type"
+    t.string "vehicle_type"
     t.decimal "daily_rate", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
