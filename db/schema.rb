@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_151129) do
+ActiveRecord::Schema.define(version: 2019_12_23_180738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 2019_12_23_151129) do
     t.bigint "person_id"
     t.bigint "vehicle_id"
     t.decimal "value", precision: 8, scale: 2
-    t.date "start_date"
-    t.date "end_date"
-    t.date "withdrawal_date"
-    t.date "return_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "withdrawal_date"
+    t.datetime "return_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_rentals_on_person_id"
