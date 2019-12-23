@@ -1,0 +1,13 @@
+# .rubocop.yml
+AllCops:
+  Exclude:
+    - 'test/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake,bundle,update,setup,spring,yarn}'
+    - config.ru
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Documentation:
+  Enabled: false
