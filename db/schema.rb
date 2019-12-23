@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_151129) do
   create_table "rentals", force: :cascade do |t|
     t.bigint "person_id"
     t.bigint "vehicle_id"
-    t.string "value"
+    t.decimal "value", precision: 8, scale: 2
     t.date "start_date"
     t.date "end_date"
     t.date "withdrawal_date"

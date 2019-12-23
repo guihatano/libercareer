@@ -6,7 +6,7 @@ class CreateVehicles < ActiveRecord::Migration[5.2]
       t.string :year
       t.string :license_plate
       t.string :type
-      t.decimal :daily_rate, :precision => 8, :scale => 2
+      t.decimal :daily_rate, precision: 8, scale: 2
 
       t.timestamps
     end
