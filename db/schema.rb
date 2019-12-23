@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_180738) do
+ActiveRecord::Schema.define(version: 2019_12_23_182141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_12_23_180738) do
     t.boolean "preferential"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id"
+    t.index ["person_id"], name: "index_phones_on_person_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_180738) do
   end
 
   add_foreign_key "licenses", "people"
+  add_foreign_key "phones", "people"
   add_foreign_key "rentals", "people"
   add_foreign_key "rentals", "vehicles"
 end
