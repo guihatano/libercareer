@@ -10,20 +10,24 @@ class Person < ApplicationRecord
   end
 
   def of_age?
-    current = Date.today
-    year_difference = current.year - birthdate.year
-    return true if year_difference > 21
+    return true if Date.today.year - birthdate.year > 21
 
-    year_ok = year_difference == 21
-    same_month = current.month == birthdate.month
-    month_gone = current.month > birthdate.month
-    birthday_gone = current.day >= birthdate.day
-
-    if (year_ok && month_gone) || (year_ok && (same_month && birthday_gone))
+    if Date.today.year - birthdate.year == 21 &&
+       check_month_and_day
       return true
     end
 
-    return false
+    false
+  end
+
+  def check_month_and_day
+    if Date.today.month > birthdate.month ||
+       (Date.today.month == birthdate.month &&
+       Date.today.day >= birthdate.day)
+      return true
+    end
+
+    false
   end
 
   def renting?
