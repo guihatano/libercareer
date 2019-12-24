@@ -12,7 +12,9 @@
 
   <body>
     <%= render 'layouts/navbar_menu' %>
-    <%= yield %>
+    <div class="container mt-5">
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>
