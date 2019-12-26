@@ -16,8 +16,9 @@ class License < ApplicationRecord
     special: 'special'
   }
 
-  scope :expiring, -> { where('expiration_date <= ?', (Date.today+1.month)) }
+  scope :expiring, -> { where('expiration_date <= ?', (Date.today + 1.month)) }
   scope :expireds, -> { where('expiration_date < ?', Date.today) }
+  scope :by_modality, ->(modality) { where(modalities: modality) }
 
   def expired?
     expiration_date < Date.today
