@@ -33,4 +33,12 @@ class Person < ApplicationRecord
   def renting?
     rentals.in_progress.present?
   end
+
+  def age
+    ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
+  end
+
+  def full_name
+    "#{name} #{surname}".squish
+  end
 end
