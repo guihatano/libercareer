@@ -201,3 +201,5 @@ Rental.find_or_create_by(
   withdrawal_date: '07/11/2019 08:00',
   return_date: '09/11/2019 10:20'
 )
+
+puts 'Finished seeds'
