@@ -149,35 +149,35 @@ License.find_or_create_by(
 Vehicle.find_or_create_by(
   model: 'CB 300',
   color: 'vermelho',
-  vehicle_type: 'moto',
+  vehicle_type: :motorcycle,
   license_plate: 'AHD-5454',
   daily_rate: 99.99
 )
 hb20 = Vehicle.find_or_create_by(
   model: 'HB 20',
   color: 'preto',
-  vehicle_type: 'carro',
+  vehicle_type: :car,
   license_plate: 'FMR-6345',
   daily_rate: 139.99
 )
 agrale = Vehicle.find_or_create_by(
   model: 'Agrale 6500',
   color: 'prata',
-  vehicle_type: 'VUC',
+  vehicle_type: :small_truck,
   license_plate: 'RGH-4245',
   daily_rate: 199.99
 )
 Vehicle.find_or_create_by(
   model: 'Millennium III',
   color: 'azul',
-  vehicle_type: 'onibus',
+  vehicle_type: :bus,
   license_plate: 'BTF-5278',
   daily_rate: 279.99
 )
 Vehicle.find_or_create_by(
   model: 'Atego 2425',
   color: 'branco',
-  vehicle_type: 'caminhão',
+  vehicle_type: :truck,
   license_plate: 'BYT-2354',
   daily_rate: 409.99
 )
