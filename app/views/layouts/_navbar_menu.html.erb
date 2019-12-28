@@ -5,4 +5,23 @@
   <a class="navbar-brand" href="#">
     <%= image_tag 'logo.png', width: "78", height: "25", alt: "guihatano logo" %>
   </a>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <% if admin_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to('Login', new_admin_session_path) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </nav>

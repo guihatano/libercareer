@@ -1,4 +1,7 @@
 pt-BR:
+  flashes:
+    alert: 'warning'
+    notice: 'success'
   nobody: "Ninguém"
   number:
     currency:

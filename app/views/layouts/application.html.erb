@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LiberTest</title>
+    <title>LiberCareer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,6 +13,7 @@
   <body>
     <%= render 'layouts/navbar_menu' %>
     <div class="container mt-5">
+      <%= render partial: 'layouts/flash_messages', locals: {flash: flash} %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
