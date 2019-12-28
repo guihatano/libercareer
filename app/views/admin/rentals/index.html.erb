@@ -1,0 +1,7 @@
+<h1 class="title">Aluguéis</h1>
+
+<% @rentals.each do |rental| %>
+  <li>
+    <%= link_to rental.vehicle.model, edit_admin_rental_path(rental) %>
+  </li>
+<% end %>
