@@ -4,8 +4,7 @@ class HomeController < ApplicationController
   def index
     @answer_one = Rental.by_vehicle_type(:car).sum(:value)
     @answer_two = RentalsDelayedsManager.new.process
-
-    @answer_three = ''
+    @answer_three = Person.by_modality('E').or(Person.by_modality('A,E'))
     @answer_four = ''
     Rental.in_progress.each do |rental|
       @answer_four += rental.person.full_name

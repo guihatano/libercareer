@@ -5,6 +5,12 @@ class Person < ApplicationRecord
   has_one :license
   validates :name, presence: true
 
+  delegate :modalities, to: :license, prefix: true
+
+  scope :by_modality, (lambda do |modality|
+    joins(:license).where('licenses.modalities = ?', modality)
+  end)
+
   def can_rent?
     of_age? && !license.expired?
   end

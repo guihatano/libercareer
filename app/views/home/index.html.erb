@@ -13,7 +13,18 @@
 <h4 class="question">
   Qual o nome completo das pessoas que podem alugar caminhões?
 </h4>
-<p class="answer">Resposta: <%= @answer_three %></p>
+<p class="answer">
+  Resposta:
+  <% if @answer_three.present? %>
+    <% @answer_three.each do |person| %>
+      <li>
+        <%= person.full_name %>
+      </li>
+    <% end %>
+  <% else %>
+    <%= t(:nobody) %>
+  <% end %>
+</p>
 
 <h4 class="question">
   Qual o nome completo das pessoas com locações em andamento?
