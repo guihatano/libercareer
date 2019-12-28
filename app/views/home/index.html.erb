@@ -3,38 +3,38 @@
 <h4 class="question">
   Qual é o custo total de todas as locações de carros?
 </h4>
-<p class="answer">Resposta: <%= number_to_currency @answer_one %></p>
+<p class="answer">Resposta: <%= number_to_currency @answers[:one] %></p>
 
 <h4 class="question">
   Qual o nome completo das pessoas que possuem atrasos em suas locações e o quanto (dias; horas; minutos)
 </h4>
-<p class="answer">Resposta: <%= rentals_delayeds(@answer_two) %></p>
+<p class="answer">Resposta: <%= rentals_delayeds(@answers[:two]) %></p>
 
 <h4 class="question">
   Qual o nome completo das pessoas que podem alugar caminhões?
 </h4>
 <p class="answer">
   Resposta:
-  <%= list_person_full_name(@answer_three) %>
+  <%= list_person_full_name(@answers[:three]) %>
 </p>
 
 <h4 class="question">
   Qual o nome completo das pessoas com locações em andamento?
 </h4>
-<p class="answer">Resposta: <%= @answer_four %></p>
+<p class="answer">Resposta: <%= @answers[:four] %></p>
 
 <h4 class="question">
   Qual o nome completo das pessoas que podem alugar automóveis por mais de 4 dias?
 </h4>
 <p class="answer">Resposta:
-  <%= list_person_full_name(@answer_five) %>
+  <%= list_person_full_name(@answers[:five]) %>
 </p>
 
 <h4 class="question">
   Quais automóveis não podem ser alugados às quartas-feiras?
 </h4>
 <p class="answer">Resposta:
-  <% @answer_six.each do |vehicle| %>
+  <% @answers[:six].each do |vehicle| %>
     <li><%= vehicle.model %></li>
   <% end %>
 </p>
@@ -42,18 +42,18 @@
 <h4 class="question">
   Qual será o custo de uma locação de moto por 3 dias?
 </h4>
-<p class="answer">Resposta: <%= @answer_seven %></p>
+<p class="answer">Resposta: <%= @answers[:seven] %></p>
 
 <h4 class="question">
   Liste as pessoas ordenando pelo custo de locações (maior para menor)
 </h4>
-<p class="answer">Resposta: <%= @answer_eight %></p>
+<p class="answer">Resposta: <%= @answers[:eight] %></p>
 
 <h4 class="question">
   Liste as pessoas para as quais a habilitação possui menos de 1 mês para seu vencimento
 </h4>
 <p class="answer">Resposta:
-  <% @answer_nine.each do |license| %>
+  <% @answers[:nine].each do |license| %>
     <li><%= license.person.full_name %></li>
   <% end %>
 </p>
