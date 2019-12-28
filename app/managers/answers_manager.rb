@@ -50,7 +50,11 @@ class AnswersManager
     Vehicle.cant_rent_wednesdays
   end
 
-  def answer_seven; end
+  def answer_seven
+    # whereas all motorcycles have same daily_rate
+    motorcycle = Vehicle.by_type(:motorcycle).first
+    motorcycle.daily_rate * 3
+  end
 
   def answer_eight; end
 
