@@ -8,4 +8,6 @@ class Vehicle < ApplicationRecord
     bus: 'bus',
     small_truck: 'small_truck'
   }
+
+  scope :cant_rent_wednesdays, -> { where('license_plate LIKE ?', '%4') }
 end

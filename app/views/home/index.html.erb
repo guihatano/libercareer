@@ -33,7 +33,11 @@
 <h4 class="question">
   Quais automóveis não podem ser alugados às quartas-feiras?
 </h4>
-<p class="answer">Resposta: <%= @answer_six %></p>
+<p class="answer">Resposta:
+  <% @answer_six.each do |vehicle| %>
+    <li><%= vehicle.model %></li>
+  <% end %>
+</p>
 
 <h4 class="question">
   Qual será o custo de uma locação de moto por 3 dias?

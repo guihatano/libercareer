@@ -10,7 +10,7 @@ class HomeController < ApplicationController
       @answer_four += rental.person.full_name
     end
     @answer_five = PersonRentManager.new.process
-    @answer_six = ''
+    @answer_six = Vehicle.cant_rent_wednesdays
     @answer_seven = ''
     @answer_eight = ''
     @answer_nine = ''
