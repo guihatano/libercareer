@@ -62,7 +62,10 @@ class AnswersManager
     motorcycle.daily_rate * 3
   end
 
-  def answer_eight; end
+  def answer_eight
+    people = Person.all.sort_by(&:total_rentals_value)
+    people.reverse
+  end
 
   def answer_nine
     License.expiring

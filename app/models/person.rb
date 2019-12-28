@@ -47,4 +47,8 @@ class Person < ApplicationRecord
   def full_name
     "#{name} #{surname}".squish
   end
+
+  def total_rentals_value
+    rentals.sum(:value)
+  end
 end
