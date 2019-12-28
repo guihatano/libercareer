@@ -10,4 +10,5 @@ class Vehicle < ApplicationRecord
   }
 
   scope :cant_rent_wednesdays, -> { where('license_plate LIKE ?', '%4') }
+  scope :by_type, ->(type) { where(vehicle_type: type) }
 end
