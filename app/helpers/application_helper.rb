@@ -13,4 +13,17 @@ module ApplicationHelper
     end
     string.html_safe
   end
+
+  def list_person_full_name(people)
+    html = ''
+    if people.present?
+      people.each do |person|
+        html += "<li>#{person.full_name}</li>"
+      end
+    else
+      html = t(:nobody)
+    end
+
+    html.html_safe
+  end
 end

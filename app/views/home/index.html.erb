@@ -15,15 +15,7 @@
 </h4>
 <p class="answer">
   Resposta:
-  <% if @answer_three.present? %>
-    <% @answer_three.each do |person| %>
-      <li>
-        <%= person.full_name %>
-      </li>
-    <% end %>
-  <% else %>
-    <%= t(:nobody) %>
-  <% end %>
+  <%= list_person_full_name(@answer_three) %>
 </p>
 
 <h4 class="question">
@@ -34,7 +26,9 @@
 <h4 class="question">
   Qual o nome completo das pessoas que podem alugar automóveis por mais de 4 dias?
 </h4>
-<p class="answer">Resposta: <%= @answer_five %></p>
+<p class="answer">Resposta:
+  <%= list_person_full_name(@answer_five) %>
+</p>
 
 <h4 class="question">
   Quais automóveis não podem ser alugados às quartas-feiras?

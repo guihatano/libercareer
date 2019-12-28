@@ -15,4 +15,8 @@ class Rental < ApplicationRecord
   def person_already_renting?
     errors.add(:person, 'person_already_renting') if person&.renting?
   end
+
+  def delayed?
+    (end_date < Time.now) && return_date.nil?
+  end
 end
