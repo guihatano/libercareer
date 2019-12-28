@@ -3,8 +3,8 @@
 class HomeController < ApplicationController
   def index
     @answer_one = Rental.by_vehicle_type(:car).sum(:value)
+    @answer_two = RentalsDelayedsManager.new.process
 
-    @answer_two = ''
     @answer_three = ''
     @answer_four = ''
     Rental.in_progress.each do |rental|
