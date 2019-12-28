@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     Rental.in_progress.each do |rental|
       @answer_four += rental.person.full_name
     end
-    @answer_five = ''
+    @answer_five = PersonRentManager.new.process
     @answer_six = ''
     @answer_seven = ''
     @answer_eight = ''
