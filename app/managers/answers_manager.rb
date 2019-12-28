@@ -30,7 +30,13 @@ class AnswersManager
   end
 
   def answer_three
-    Person.by_modality('E').or(Person.by_modality('A,E'))
+    can_rent_truck = []
+    truck_drivers = Person.by_modality('E').or(Person.by_modality('A,E'))
+    truck_drivers.each do |driver|
+      can_rent_truck << driver if driver.age >= 60
+    end
+
+    can_rent_truck
   end
 
   def answer_four
