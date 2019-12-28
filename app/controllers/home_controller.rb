@@ -13,6 +13,6 @@ class HomeController < ApplicationController
     @answer_six = Vehicle.cant_rent_wednesdays
     @answer_seven = ''
     @answer_eight = ''
-    @answer_nine = ''
+    @answer_nine = License.expiring
   end
 end
