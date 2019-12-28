@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PersonRentManager
   def initialize
     @people = Person.all
@@ -10,9 +12,7 @@ class PersonRentManager
   def can_rent_more_days
     can_rent_list = []
     @people.each do |person|
-      if person.rentals.count >= 2
-        can_rent_list << person
-      end
+      can_rent_list << person if person.rentals.count >= 2
     end
 
     can_rent_list
@@ -26,10 +26,6 @@ class PersonRentManager
       count += 1 unless rental.delayed?
     end
 
-    if count >= 2
-      true
-    else
-      false
-    end
+    count >= 2
   end
 end
