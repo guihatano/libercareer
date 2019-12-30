@@ -12,9 +12,16 @@
 
   <body>
     <%= render 'layouts/navbar_menu' %>
-    <div class="container mt-5">
-      <%= render partial: 'layouts/flash_messages', locals: {flash: flash} %>
-      <%= yield %>
+    <div class="container-fluid mb-5">
+      <div class="row">
+        <% if admin_signed_in? %>
+          <%= render 'admin/sidebar' %>
+        <% end %>
+        <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+          <%= render partial: 'layouts/flash_messages', locals: {flash: flash} %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
     <%= render 'layouts/footer' %>
   </body>
