@@ -2,7 +2,7 @@ pt-BR:
   flashes:
     alert: 'warning'
     notice: 'success'
-  nobody: "Ninguém"
+  nobody: 'Ninguém'
   number:
     currency:
       format:
@@ -13,3 +13,46 @@ pt-BR:
         significant: false
         strip_insignificant_zeros: false
         unit: R$
+  activerecord:
+    models:
+      admin: 'Administrador'
+      licenses: 'Habilitação'
+      person: 'Pessoa'
+      phone: 'Telefone'
+      rental: 'Locação'
+    attributes:
+      admin:
+        name: 'Nome'
+        email: 'E-mail'
+        password: 'Senha'
+      license:
+        person_id: 'Pessoa'
+        number: 'Número'
+        modalities: 'Modalidades'
+        expiration_date: 'Validade'
+      person:
+        name: 'Nome'
+        surname: 'Sobrenome'
+        document: 'Documento'
+        email: 'E-mail'
+        birthdate: 'Data de nascimento'
+      phone:
+        code: 'DDD'
+        number: 'Número'
+        phone_type: 'Tipo'
+        preferential: 'Preferencial'
+      rental:
+        person_id: 'Cliente'
+        vehicle_id: 'Automóvel'
+        start_date: 'Data de início'
+        start_date: 'Data de término'
+        withdrawl_date: 'Data de retirada'
+        return_date: 'Data de retorno'
+        value: 'Valor'
+      vehicle:
+        model: 'Modelo'
+        color: 'Cor'
+        year: 'Ano'
+        vehicle_type: 'Tipo'
+        license_plate: 'Placa'
+        daily_rate: 'Custo diário'
