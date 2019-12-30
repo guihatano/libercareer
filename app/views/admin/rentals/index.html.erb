@@ -1,4 +1,4 @@
-<h1 class="title">Aluguéis</h1>
+<h1 class="title">Locações</h1>
 
 <div class="mb-3">
   <%= link_to 'Novo aluguel', new_admin_rental_path, class: 'btn btn-primary' %>
@@ -9,5 +9,3 @@
     <%= link_to rental.vehicle.model, edit_admin_rental_path(rental) %>
   </li>
 <% end %>
-
-<%= render 'admin/sidebar' %>

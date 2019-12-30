@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :admins
 
   namespace :admin do
-    resources :rentals
+    resources :rentals do
+      post 'calculate-rental', to: 'rentals#calculate_rental_value', on: :new
+    end
 
     root to: 'rentals#index'
   end

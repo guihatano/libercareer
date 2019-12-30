@@ -1,3 +1,55 @@
 <%= form_for [:admin, @rental] do |f| %>
-  <%= 'teste' %>
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @rental.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :person_id %>
+      <%= f.select :person_id, @people.collect { |person| [person.full_name, person.id] }, { prompt: t('select') }, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= f.label :vehicle_id %>
+      <%= f.select :vehicle_id, @vehicles.collect { |vehicle| [vehicle.model, vehicle.id] }, { prompt: t('select') }, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= f.label :value %>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">R$</div>
+        </div>
+        <%= f.number_field :value, value: @rental.value ? '%.2f' % @rental.value : nil, min: 0, step: :any, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :withdrawal_date %>
+      <%= f.date_field :withdrawal_date, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :return_date %>
+      <%= f.date_field :return_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.submit t('save'), class: 'btn btn-primary' %>
+  <%= link_to 'Back', :back, class: 'btn btn-secondary' %>
 <% end %>

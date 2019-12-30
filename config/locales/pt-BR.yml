@@ -3,6 +3,8 @@ pt-BR:
     alert: 'warning'
     notice: 'success'
   nobody: 'Ninguém'
+  select: 'Selecione'
+  save: 'Salvar'
   number:
     currency:
       format:
@@ -45,8 +47,8 @@ pt-BR:
         person_id: 'Cliente'
         vehicle_id: 'Automóvel'
         start_date: 'Data de início'
-        start_date: 'Data de término'
-        withdrawl_date: 'Data de retirada'
+        end_date: 'Data de término'
+        withdrawal_date: 'Data de retirada'
         return_date: 'Data de retorno'
         value: 'Valor'
       vehicle:
@@ -56,3 +58,6 @@ pt-BR:
         vehicle_type: 'Tipo'
         license_plate: 'Placa'
         daily_rate: 'Custo diário'
+    errors:
+      messages:
+        end_date_less_than_start_date: 'anterior que a data de início'
