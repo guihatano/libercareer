@@ -11,11 +11,14 @@ class Rental < ApplicationRecord
   scope :delayeds, -> { where('end_date < ?', Time.now).in_progress }
 
   validates_presence_of :person, :vehicle, :start_date, :end_date
-  validate :person_already_renting?, on: :create
+  validate :person_already_renting?
   validate :start_and_end_date
 
   def person_already_renting?
-    errors.add(:person, 'person_already_renting') if person&.renting?
+    if person&.renting? &&
+       person.rentals.in_progress.first == self
+      errors.add(:person_id, :person_already_renting)
+    end
   end
 
   def start_and_end_date

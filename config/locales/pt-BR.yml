@@ -61,3 +61,4 @@ pt-BR:
     errors:
       messages:
         end_date_less_than_start_date: 'anterior que a data de início'
+        person_already_renting: 'já possui uma locação em andamento'

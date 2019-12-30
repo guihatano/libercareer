@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if (($(".new_rental").length > 0) || ($(".edit_rental").length > 0)) {
+  if (($("#new_rental").length > 0) || ($("#edit_rental").length > 0)) {
     $("#rental_vehicle_id").on('change', function (e) {
       console.log($("#rental_vehicle_id").val())
       calculateRentalValue();
