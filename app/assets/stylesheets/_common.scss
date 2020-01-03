@@ -1,3 +1,11 @@
+.content {
+  min-height: 500px;
+
+  .row {
+    min-height: inherit;
+  }
+}
+
 .bd-sidebar {
   background-color: #343a4017;
 
