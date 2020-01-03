@@ -60,6 +60,12 @@ pt-BR:
         vehicle_type: 'Tipo'
         license_plate: 'Placa'
         daily_rate: 'Custo diário'
+      vehicle/vehicle_type:
+        car: 'Carro'
+        motorcycle: 'Moto'
+        truck: 'Caminhão'
+        bus: 'Ônibus'
+        small_truck: 'VUC - Veículos Urbanos de Carga'
     errors:
       messages:
         end_date_less_than_start_date: 'anterior que a data de início'

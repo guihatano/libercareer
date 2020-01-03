@@ -6,7 +6,7 @@ class Admin
     before_action :set_people, :set_vehicles, except: :index
 
     def index
-      @rentals = Rental.all
+      @rentals = Rental.all.paginate(page: params[:page] || 1, per_page: 10)
     end
 
     def new
@@ -17,7 +17,7 @@ class Admin
       @rental = Rental.create(rental_params)
 
       if @rental.save
-        redirect_to admin_rentals_path
+        redirect_to admin_rentals_path, notice: 'Adicionado com sucesso!'
       else
         render :new
       end
@@ -25,7 +25,7 @@ class Admin
 
     def update
       if @rental.update(rental_params)
-        redirect_to admin_rentals_path
+        redirect_to admin_rentals_path, notice: 'Salvo com sucesso!'
       else
         render :edit
       end

@@ -1,0 +1,41 @@
+<h1 class="title">Veículos</h1>
+
+<div class="mb-3">
+  <%#= link_to 'Adicionar veículo', new_admin_vehicle_path, class: 'btn btn-primary' %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Placa</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Tipo</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @vehicles.each do |vehicle| %>
+    <tr>
+      <td>
+        <%= link_to vehicle.license_plate, edit_admin_vehicle_path(vehicle) %>
+      </td>
+      <td>
+        <%= link_to vehicle.model, edit_admin_vehicle_path(vehicle) %>
+      </td>
+      <td>
+        <%= Vehicle.human_attribute_name("vehicle_type.#{vehicle.vehicle_type}") %>
+      </td>
+      <td>
+        <%= link_to edit_admin_vehicle_path(vehicle), class: 'btn btn-primary' do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+        <%= link_to admin_vehicle_path(vehicle), method: :delete, class: 'btn btn-danger', data: { confirm: t(:are_you_sure)} do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @vehicles, list_classes: %w(pagination justify-content-center), previous_label: '<<', next_label: '>>' %>

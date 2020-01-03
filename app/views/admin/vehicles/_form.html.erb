@@ -1,0 +1,30 @@
+<%= form_for [:admin, @vehicle] do |f| %>
+  <% if @vehicle.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @vehicle.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :model %>
+      <%= f.text_field :model, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :license_plate %>
+      <%= f.text_field :license_plate, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :vehicle_type %>
+      <%= f.select(:vehicle_type, Vehicle.vehicle_types.keys.map {|type| [Vehicle.human_attribute_name("vehicle_type.#{type}"), type.titleize]}, { prompt: t('select') }, class: 'form-control' ) %>
+    </div>
+  </div>
+
+  <%= f.submit t('save'), class: 'btn btn-primary' %>
+  <%= link_to t('back'), :back, class: 'btn btn-secondary' %>
+<% end %>

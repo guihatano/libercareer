@@ -37,3 +37,7 @@
   <% end %>
   </tbody>
 </table>
+
+<div class="center-block">
+  <%= will_paginate @people, list_classes: %w(pagination justify-content-center), previous_label: '<<', next_label: '>>' %>
+</div>

@@ -1,26 +1,17 @@
 $(document).ready(function() {
-  if (($("#new_rental").length > 0) || ($("#edit_rental").length > 0)) {
-    $("#rental_vehicle_id").on('change', function (e) {
-      console.log($("#rental_vehicle_id").val())
+  // if ($("#new_rental").length > 0 || $(".edit_rental").length > 0) {
+    $("#rental_vehicle_id").change(function () {
       calculateRentalValue();
     })
 
     $("#rental_start_date").on('change', function (e) {
-      console.log($("#rental_start_date").val())
       calculateRentalValue();
     })
 
     $("#rental_end_date").on('change', function (e) {
-      console.log($("#rental_end_date").val())
       calculateRentalValue();
     })
-  }
-
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
+  // }
 });
 
 function calculateRentalValue() {
@@ -31,6 +22,9 @@ function calculateRentalValue() {
     $.ajax({
       url: '/admin/rentals/new/calculate-rental',
       method: 'POST',
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
       data: {
         rental: {
           vehicle_id: $("#rental_vehicle_id").val(),
