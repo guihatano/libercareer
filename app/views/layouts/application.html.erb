@@ -12,12 +12,12 @@
 
   <body>
     <%= render 'layouts/navbar_menu' %>
-    <div class="container-fluid mb-5">
+    <div class="container-fluid">
       <div class="row">
         <% if admin_signed_in? %>
           <%= render 'admin/sidebar' %>
         <% end %>
-        <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+        <div class="col-12 col-md-<%= admin_signed_in? ? '9 col-xl-8' : '12 col-xl-12' %> py-md-3 pl-md-5 bd-content">
           <%= render partial: 'layouts/flash_messages', locals: {flash: flash} %>
           <%= yield %>
         </div>

@@ -1,13 +1,18 @@
-.bd-sidenav {
-  a {
-    color: #212529;
+.bd-sidebar {
+  background-color: #343a4017;
 
-    &:hover,
-    &:focus {
-      color: #E6E6E6;
+  .bd-sidenav {
+    a {
+      color: #212529;
+
+      &:hover,
+      &:focus {
+        color: #E6E6E6;
+      }
     }
   }
 }
+
 
 .nav-item {
   a {
