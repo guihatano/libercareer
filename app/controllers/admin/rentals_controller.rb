@@ -35,6 +35,18 @@ class Admin
       redirect_to edit_admin_rental_path(@rental)
     end
 
+    def destroy
+      begin
+        @rental = Rental.find(params[:id])
+        @rental.destroy
+        redirect_to admin_rentals_path, notice: "Removido com sucesso!"
+      rescue ActiveRecord::RecordNotFound
+        redirect_to admin_rentals_path, alert: 'Registro já foi removido'
+      rescue ActiveRecord::RecordNotDestroyed
+        redirect_to admin_rentals_path, alert: 'Não foi possível remover'
+      end
+    end
+
     def calculate_rental_value
       vehicle = Vehicle.find calculate_params[:vehicle_id]
       end_date = calculate_params[:end_date].to_date
