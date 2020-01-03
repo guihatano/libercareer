@@ -11,8 +11,22 @@ class Person < ApplicationRecord
     joins(:license).where('licenses.modalities = ?', modality)
   end)
 
-  def can_rent?
-    of_age? && !license.expired?
+  def can_rent?(vehicle_type = '')
+    can_rent = of_age? && !license.expired?
+    case vehicle_type
+    when 'motorcycle'
+      can_rent && license.modalities.include?('a')
+    when 'car'
+      can_rent && license.modalities.include?('b')
+    when 'small_truck'
+      can_rent && license.modalities.include?('c')
+    when 'truck'
+      can_rent && age >= 60 && license.modalities.include?('e')
+    when 'bus'
+      can_rent && age >= 40 && license.modalities.include?('d')
+    else
+      can_rent
+    end
   end
 
   def of_age?

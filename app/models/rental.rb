@@ -12,12 +12,20 @@ class Rental < ApplicationRecord
 
   validates_presence_of :person, :vehicle, :start_date, :end_date
   validate :person_already_renting?
+  validate :person_can_rent?
   validate :start_and_end_date
 
   def person_already_renting?
     if person&.renting? &&
        person.rentals.in_progress.first != self
       errors.add(:person_id, :person_already_renting)
+    end
+  end
+
+  def person_can_rent?
+    unless person.can_rent?(vehicle.vehicle_type)
+      errors.add(:person_id, :person_cant_rent)
+      errors.add(:vehicle_id, :vehicle_cant_rent)
     end
   end
 
