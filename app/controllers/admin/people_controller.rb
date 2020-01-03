@@ -10,6 +10,7 @@ class Admin
 
     def new
       @person = Person.new
+      @person.phones.build
     end
 
     def create
@@ -53,7 +54,7 @@ class Admin
         :document,
         :email,
         :birthdate,
-        phones_attributes: %i[code phone_type preferential]
+        phones_attributes: %i[code number phone_type preferential]
       )
     end
   end

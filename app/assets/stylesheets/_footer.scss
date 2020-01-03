@@ -9,7 +9,6 @@ footer {
   }
 
   background-color: #343a40;
-  // margin-top: 60px;
   width: 100%;
   bottom: 0px;
 
@@ -82,4 +81,10 @@ footer {
     padding-left: 0;
   }
 
+}
+
+@media (min-width: 600px) {
+  footer {
+    margin-top: 50px;
+  }
 }

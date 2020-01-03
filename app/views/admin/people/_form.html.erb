@@ -29,6 +29,24 @@
       <%= f.email_field :email, class: 'form-control' %>
     </div>
 
+    <%= f.fields_for :phones do |phone_form| %>
+      <div class="form-group col-md-6">
+        <%= phone_form.label :code %>
+        <%= phone_form.text_field :code, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= phone_form.label :number %>
+        <%= phone_form.text_field :number, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= phone_form.label :phone_type %>
+        <%= phone_form.text_field :phone_type, class: 'form-control' %>
+      </div>
+      <div class="form-check col-md-6">
+        <%= phone_form.radio_button :preferential, class: 'form-check-input' %>
+        <%= phone_form.label :preferential, for: 'person_phones_attributes_0_preferential_classform-check-input' %>
+      </div>
+    <% end %>
   </div>
 
   <%= f.submit t('save'), class: 'btn btn-primary' %>
