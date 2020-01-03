@@ -16,7 +16,7 @@ class Rental < ApplicationRecord
 
   def person_already_renting?
     if person&.renting? &&
-       person.rentals.in_progress.first == self
+       person.rentals.in_progress.first != self
       errors.add(:person_id, :person_already_renting)
     end
   end
