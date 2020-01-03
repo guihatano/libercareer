@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class Person < ApplicationRecord
+  has_many :phones, dependent: :destroy
   has_many :rentals
   has_one :license
   validates :name, presence: true
+
+  accepts_nested_attributes_for :phones, allow_destroy: true
 
   delegate :modalities, to: :license, prefix: true
 

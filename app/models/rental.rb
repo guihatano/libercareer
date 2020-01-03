@@ -27,6 +27,8 @@ class Rental < ApplicationRecord
       errors.add(:person_id, :person_cant_rent)
       errors.add(:vehicle_id, :vehicle_cant_rent)
     end
+
+    true
   end
 
   def start_and_end_date

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :rentals do
       post 'calculate-rental', to: 'rentals#calculate_rental_value', on: :new
     end
+    resources :people
 
     root to: 'rentals#index'
   end
