@@ -4,8 +4,36 @@
   <%= link_to 'Novo aluguel', new_admin_rental_path, class: 'btn btn-primary' %>
 </div>
 
-<% @rentals.each do |rental| %>
-  <li>
-    <%= link_to rental.vehicle.model, edit_admin_rental_path(rental) %>
-  </li>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Veículo</th>
+      <th scope="col">Pessoa</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td>
+        <%= link_to rental.id, edit_admin_rental_path(rental) %>
+      </td>
+      <td>
+        <%= link_to rental.vehicle.model, edit_admin_rental_path(rental) %>
+      </td>
+      <td>
+        <%= rental.person&.full_name %>
+      </td>
+      <td>
+        <%= link_to admin_rental_path(rental), class: 'btn btn-primary' do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+        <%= link_to admin_rental_path(rental), method: :delete, class: 'btn btn-danger', data: { confirm: t(:are_you_sure)} do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

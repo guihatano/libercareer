@@ -1,10 +1,12 @@
 pt-BR:
-  flashes:
-    alert: 'warning'
-    notice: 'success'
+  are_you_sure: 'Tem certeza que deseja remover?'
+  back: 'Voltar'
   nobody: 'Ninguém'
   select: 'Selecione'
   save: 'Salvar'
+  flashes:
+    alert: 'warning'
+    notice: 'success'
   number:
     currency:
       format:

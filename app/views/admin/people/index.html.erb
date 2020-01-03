@@ -4,8 +4,36 @@
   <%= link_to 'Adicionar pessoa', new_admin_person_path, class: 'btn btn-primary' %>
 </div>
 
-<% @people.each do |person| %>
-  <li>
-    <%= link_to person.full_name, edit_admin_person_path(person) %>
-  </li>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @people.each do |person| %>
+    <tr>
+      <td>
+        <%= link_to person.id, edit_admin_person_path(person) %>
+      </td>
+      <td>
+        <%= link_to person.full_name, edit_admin_person_path(person) %>
+      </td>
+      <td>
+        <%= person.email %>
+      </td>
+      <td>
+        <%= link_to edit_admin_person_path(person), class: 'btn btn-primary' do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+        <%= link_to admin_person_path(person), method: :delete, class: 'btn btn-danger', data: { confirm: t(:are_you_sure)} do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
