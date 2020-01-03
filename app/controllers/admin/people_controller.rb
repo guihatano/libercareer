@@ -16,7 +16,7 @@ class Admin
       @person = Person.create(person_params)
 
       if @person.save
-        redirect_to admin_people_path, notice: "Criado com sucesso!"
+        redirect_to admin_people_path, notice: 'Criado com sucesso!'
       else
         render :new
       end
@@ -24,22 +24,20 @@ class Admin
 
     def update
       if @person.update(person_params)
-        redirect_to admin_people_path, notice: "Salvo com sucesso!"
+        redirect_to admin_people_path, notice: 'Salvo com sucesso!'
       else
         render :edit
       end
     end
 
     def destroy
-      begin
-        @person = Person.find(params[:id])
-        @person.destroy
-        redirect_to admin_people_path, notice: "Removido com sucesso!"
-      rescue ActiveRecord::RecordNotFound
-        redirect_to admin_people_path, alert: 'Registro já foi removido'
-      rescue ActiveRecord::RecordNotDestroyed
-        redirect_to admin_people_path, alert: 'Não foi possível remover'
-      end
+      @person = Person.find(params[:id])
+      @person.destroy
+      redirect_to admin_people_path, notice: 'Removido com sucesso!'
+    rescue ActiveRecord::RecordNotFound
+      redirect_to admin_people_path, alert: 'Registro já foi removido'
+    rescue ActiveRecord::RecordNotDestroyed
+      redirect_to admin_people_path, alert: 'Não foi possível remover'
     end
 
     private

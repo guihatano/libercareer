@@ -36,15 +36,13 @@ class Admin
     end
 
     def destroy
-      begin
-        @rental = Rental.find(params[:id])
-        @rental.destroy
-        redirect_to admin_rentals_path, notice: "Removido com sucesso!"
-      rescue ActiveRecord::RecordNotFound
-        redirect_to admin_rentals_path, alert: 'Registro já foi removido'
-      rescue ActiveRecord::RecordNotDestroyed
-        redirect_to admin_rentals_path, alert: 'Não foi possível remover'
-      end
+      @rental = Rental.find(params[:id])
+      @rental.destroy
+      redirect_to admin_rentals_path, notice: 'Removido com sucesso!'
+    rescue ActiveRecord::RecordNotFound
+      redirect_to admin_rentals_path, alert: 'Registro já foi removido'
+    rescue ActiveRecord::RecordNotDestroyed
+      redirect_to admin_rentals_path, alert: 'Não foi possível remover'
     end
 
     def calculate_rental_value

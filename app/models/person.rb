@@ -4,7 +4,7 @@ class Person < ApplicationRecord
   has_many :phones, dependent: :destroy
   has_many :rentals
   has_one :license
-  validates :name, presence: true
+  validates :name, :document, presence: true
 
   accepts_nested_attributes_for :phones, allow_destroy: true
 
@@ -14,25 +14,36 @@ class Person < ApplicationRecord
     joins(:license).where('licenses.modalities = ?', modality)
   end)
 
-  # rubocop:disable MethodLength
+  # rubocop:disable MethodLength, AbcSize, CyclomaticComplexity
+  # disabled rubocop here because it's a switch case,
+  # so it has is many lines and is complex
+  # I could divide it on 2 methods, but it does not make sense for me
   def can_rent?(vehicle_type = '')
     can_rent = of_age? && !license.expired?
     case vehicle_type
     when 'motorcycle'
-      can_rent && license.modalities.include?('a')
+      can_rent && license.to_drive_motorcycle?
     when 'car'
-      can_rent && license.modalities.include?('b')
+      can_rent && license.to_drive_car?
     when 'small_truck'
-      can_rent && license.modalities.include?('c')
+      can_rent && license.to_drive_small_truck?
     when 'truck'
-      can_rent && age >= 60 && license.modalities.include?('e')
+      can_rent_truck?
     when 'bus'
-      can_rent && age >= 40 && license.modalities.include?('d')
+      can_rent_bus?
     else
       can_rent
     end
   end
-  # rubocop:enable MethodLength
+  # rubocop:enable MethodLength, AbcSize, CyclomaticComplexity
+
+  def can_rent_truck?
+    !license.expired? && age >= 60 && license.to_drive_truck?
+  end
+
+  def can_rent_bus?
+    !license.expired? && age >= 40 && license.to_drive_bus?
+  end
 
   def of_age?
     return true if Date.today.year - birthdate.year > 21
