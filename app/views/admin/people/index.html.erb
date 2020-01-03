@@ -1,0 +1,11 @@
+<h1 class="title">Pessoas</h1>
+
+<div class="mb-3">
+  <%= link_to 'Adicionar pessoa', new_admin_person_path, class: 'btn btn-primary' %>
+</div>
+
+<% @people.each do |person| %>
+  <li>
+    <%= link_to person.full_name, edit_admin_person_path(person) %>
+  </li>
+<% end %>

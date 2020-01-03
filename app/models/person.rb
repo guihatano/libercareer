@@ -14,6 +14,7 @@ class Person < ApplicationRecord
     joins(:license).where('licenses.modalities = ?', modality)
   end)
 
+  # rubocop:disable MethodLength
   def can_rent?(vehicle_type = '')
     can_rent = of_age? && !license.expired?
     case vehicle_type
@@ -31,6 +32,7 @@ class Person < ApplicationRecord
       can_rent
     end
   end
+  # rubocop:enable MethodLength
 
   def of_age?
     return true if Date.today.year - birthdate.year > 21

@@ -16,7 +16,7 @@ class Admin
       @person = Person.create(person_params)
 
       if @person.save
-        redirect_to admin_people_path
+        redirect_to admin_people_path, flash: { notice: "Criado com sucesso!" }
       else
         render :new
       end
@@ -24,13 +24,17 @@ class Admin
 
     def update
       if @person.update(person_params)
-        redirect_to admin_people_path
+        redirect_to admin_people_path, flash: { notice: "Salvo com sucesso!" }
       else
         render :edit
       end
     end
 
     private
+
+    def set_person
+      @person = Person.find(params[:id])
+    end
 
     def person_params
       params.require(:person).permit(
